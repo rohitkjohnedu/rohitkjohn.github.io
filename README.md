@@ -1,2 +1,2 @@
 # rohitkjohn.github.io
-My personal website
+My personal website rohitkjohnedu.github.io
