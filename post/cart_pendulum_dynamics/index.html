@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<!-- This site was created with Wowchemy. https://www.wowchemy.com -->
+<!-- Last Published: January 28, 2023 --><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.7.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.16f785cdb553c8c4431db6775122af35.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.2/css/academicons.min.css" integrity="sha512-KlJCpRsLf+KKu2VQa5vmRuClRFjxc5lXO03ixZt82HZUk41+1I0bD8KBSA0fY290ayMfWYI9udIqeOWSu1/uZg==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.0f229d4b7ebad1917a9a357cba2effab.css" />
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/libs/chroma/github-light.min.css" title="hl-light" media="print" onload="this.media='all'" >
+    <link rel="stylesheet" href="/css/libs/chroma/dracula.min.css" title="hl-dark" media="print" onload="this.media='all'" disabled>
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+
+
+  <meta name="author" content="Biography" />
+
+
+
+
+
+  
+
+<meta name="description" content="Introduction A cart pendulum is a device consisting of a movable cart with a pendulum attached to it. In this article, I am going to discuss the dynamics of one such device." />
+
+
+
+<link rel="alternate" hreflang="en-us" href="https://rohitkjohnedu.github.io/post/cart_pendulum_dynamics/" />
+<link rel="canonical" href="https://rohitkjohnedu.github.io/post/cart_pendulum_dynamics/" />
+
+
+
+  <link rel="manifest" href="/manifest.webmanifest" />
+
+
+
+<link rel="icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png" />
+<link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_3.png" />
+
+<meta name="theme-color" content="#1565c0" />
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<meta property="twitter:card" content="summary_large_image" />
+
+  <meta property="twitter:site" content="@wowchemy" />
+  <meta property="twitter:creator" content="@wowchemy" />
+<meta property="twitter:image" content="https://rohitkjohnedu.github.io/post/cart_pendulum_dynamics/featured.jpg" />
+<meta property="og:site_name" content="RKJ" />
+<meta property="og:url" content="https://rohitkjohnedu.github.io/post/cart_pendulum_dynamics/" />
+<meta property="og:title" content="Cart pendulum Part 1: Lagrangian mechanics | RKJ" />
+<meta property="og:description" content="Introduction A cart pendulum is a device consisting of a movable cart with a pendulum attached to it. In this article, I am going to discuss the dynamics of one such device." /><meta property="og:image" content="https://rohitkjohnedu.github.io/post/cart_pendulum_dynamics/featured.jpg" /><meta property="og:locale" content="en-us" />
+
+  
+    <meta
+      property="article:published_time"
+      content="2023-01-27T00:00:00&#43;00:00"
+    />
+  
+  
+    <meta property="article:modified_time" content="2023-01-27T00:00:00&#43;00:00">
+  
+
+
+
+
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://rohitkjohnedu.github.io/post/cart_pendulum_dynamics/"
+  },
+  "headline": "Cart pendulum Part 1: Lagrangian mechanics",
+  
+  "image": [
+    "https://rohitkjohnedu.github.io/post/cart_pendulum_dynamics/featured.jpg"
+  ],
+  
+  "datePublished": "2023-01-27T00:00:00Z",
+  "dateModified": "2023-01-27T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Biography"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "RKJ",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://rohitkjohnedu.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "Introduction A cart pendulum is a device consisting of a movable cart with a pendulum attached to it. In this article, I am going to discuss the dynamics of one such device."
+}
+</script>
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+  
+
+  
+
+
+  
+  <title>Cart pendulum Part 1: Lagrangian mechanics | RKJ</title>
+
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="3221e2af89945e9ea20f611b68c564cd" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.ec9d49ca50e4b80bdb08f0417a28ed84.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header header--fixed">
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">RKJ</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">RKJ</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#about"><span>Home</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#posts"><span>Posts</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#projects"><span>Projects</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+<div class="article-container pt-3">
+  <h1>Cart pendulum Part 1: Lagrangian mechanics</h1>
+
+  
+
+  
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 27, 2023
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    6 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+  
+
+
+
+
+
+</div>
+
+
+<div class="article-header container featured-image-wrapper mt-4 mb-4" style="max-width: 1200px; max-height: 675px;">
+  <div style="position: relative">
+    <img src="/post/cart_pendulum_dynamics/featured_hubf6cad8cbeab266c63b48765203dacfe_268758_1200x2500_fit_q75_h2_lanczos.webp" width="1200" height="675" alt="" class="featured-image">
+    <span class="article-header-caption">Image credit: <strong>Rohit K John</strong></span>
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <!-- ------------------------------------------------------------------------------ Introduction -->
+<h1 id="introduction">Introduction</h1>
+<div style="text-align: justify ">
+<p>A cart pendulum is a device consisting of a movable cart with a pendulum attached to it. In this article, I am going to discuss the dynamics of one such device. The cart would be constrained to move only along a s straight line such that it lies in the pendulum&rsquo;s plane of motion. This is illustrated in the cover picture.</p>
+<p>The dynamics would be described by a set of differential equations and these equations would be derived using two formulations of mechanics: Lagrangian dynamics and Hamiltonian dynamics. I omit deriving these equations using Newton&rsquo;s second law because it is very tedious and increasing the chances of mistakes sneaking in. Along with theory, a jupyter notebook would be provided with necessary code to derive these equations symbolically in python <a href="https://github.com/rohitkjohnedu/Dynamics-and-Control/blob/main/cart_pendulum_control/cart_pendulum-Lagrangian_dynamics.ipynb" target="_blank" rel="noopener">link</a>.</p>
+</div>
+<br />
+<br />
+<!-- ------------------------------------------------------------------------------ System setup -->
+<h1 id="system-setup">System setup</h1>
+<div style="text-align: justify ">
+The static configuration of the system is defined by two variables; $x$ the position of the cart relative to a reference and $\theta$ the angle between the pendulum and the vertical axis ($y$-axis) . Unlike a regular pendulum, the angle $\theta$ is measured from the positive $y$-axis. In a later article, we will discuss how to stabilises the vertical upright position of the pendulum, so defining this position as zero would become convinient. The system setup is represented concisely in the following image.
+</div>
+<p><img src="setup.jpg" alt="System setup" style="width:500px"><figcaption>Fig.1: System setup.</figcaption></p>
+<div style="text-align: justify ">
+The system is this case is simplified. We assume the system experiences no friction or air drag. Additionally the pendulum is assumted to be point mass $m_p$ attached to a mass less rod of length $l$. The pendulum is attached the cart of mass $m_c$.
+</div>
+<br />
+<br />
+<!-- ------------------------------------------------------------------------------ Verification -->
+<h1 id="verification">Verification</h1>
+<p>Before we go any further, we need to device some tests to verify whether the model we get represents the cart pendulum. It is always wise to have ways to test the answer before we get it. Doing this step beforehand ensures we are not biased by the answers. The following tests may not necessarily prove the correctness of the answer, but serves to indicate whether the solution is wrong. In other words, if the solution fails these tests, then the solution is wrong.</p>
+<h2 id="test-1">Test 1</h2>
+<p>When the mass of the pendulum is very small compared to the cart, or when $m_p \ll m_c \rightarrow m_p / m_c \approx 0$, we should be able to recover the dynamics of a simple pendulum</p>
+<h2 id="test-2">Test 2</h2>
+<p>In this system, the cart-pendulum experiences no horizontal force, unless a control force acts on it. In this article, the control input is 0. So the horizontal position of the centre of mass of the system should remain at rest or uniform motion.
+<br />
+<br /></p>
+<!-- ---------------------------------------------------------------------- Lagrangian Mechanics -->
+<h1 id="lagrangian-mechanics">Lagrangian Mechanics</h1>
+<div style="text-align: justify ">
+<p>Lagrangian Mechanics is a formulation of mechanics which uses the principle of least action [1]. Action is defined in terms of a quantity called the lagrangian (represented using $L$). The Lagrangian $L$ is defined as $L = T - V$ where $T$ is the kinetic energy of the system and $V$ is the potential energy of the system. Please visit [2] for a deep discussion on the Lagrangian Formalism.</p>
+<!-- ----------------------------------------------------------------- Setting up the Lagrangian -->
+<h2 id="setting-up-the-lagrangian">Setting up the Lagrangian</h2>
+<p>The quantities $L$, $T$ and $V$ are functions of the generalised states (the generalised positions $\textbf{q}$ and velocities $\dot{\textbf{q}}$) and time $t$. In our case the generalised positions are $x$ and $\theta$, while the generalised velocities are $\dot{x}$ and $\dot{\theta}$. Let use now express these quantities in terms of the state variables.</p>
+</div>
+<br />
+Position of the cart <br /> $(x,0)$ <br /><br />
+<p>Velocity of the cart <br /> $(\dot{x}, 0)$ <br /><br /></p>
+<p>Kinetic energy of the cart <br />  $\cfrac{1}{2}m_c\dot{x}^2$ <br /><br /></p>
+<p>Potential energy of the cart <br /> 0<br /><br /></p>
+<p>Position of the pendulum <br />  $(x + l\sin(\theta), l\cos(\theta))$<br /><br /></p>
+<p>Velocity of the pendulum <br /> $(\dot{x} + \dot{\theta}l\cos(\theta), -\dot{\theta}l\sin(\theta))$<br /><br /></p>
+<p>Kinetic energy of the pendulum <br /> $\cfrac{1}{2}m_p((\dot{x} + \dot{\theta}l\cos(\theta))^2 + (-\dot{\theta}l\sin(\theta)^2))$ <br />
+$\cfrac{1}{2}m_p(\dot{x}^2 + 2\dot{x}\dot{\theta}l\cos(\theta) + (\dot{\theta}l)^2)$<br /><br /></p>
+<p>Potential energy of the pendulum <br /> $-m_pgl\cos(\theta)$<br /><br /></p>
+<p>Total kinetic energy, $T$ <br /> $\cfrac{1}{2}m_c\dot{x}^2 + \cfrac{1}{2}m_p(\dot{x}^2 + 2\dot{x}\dot{\theta}l\cos(\theta) + (\dot{\theta}l)^2)$<br /><br />
+Total potential energy, $V$ <br /> $-m_pgl\cos(\theta)$ <br /><br />
+The Lagrangian, $L$ <br /> $\cfrac{1}{2}m_c\dot{x}^2 + \cfrac{1}{2}m_p(\dot{x}^2 + 2\dot{x}\dot{\theta}l\cos(\theta) + (\dot{\theta}l)^2) + m_pgl\cos(\theta)$<br /><br /></p>
+<!-- ----------------------------------------------------------------------- Dynamical equations -->
+<h2 id="dynamical-equations">Dynamical equations</h2>
+<p>The dynamical equations are derived using the Euler–Lagrange equation [1]. It is shown below</p>
+<div style="text-align: center ">
+$\begin{equation}
+\cfrac{\mathrm{d}}{\mathrm{d} t}\left(\cfrac{\partial L}{\partial \dot{q}_j}\right) - \cfrac{\partial L}{\partial q_j} = Q_{nc}
+\end{equation}$
+</div>
+<div style="text-align: justify ">
+Here $Q_{nc}$ represents and non-conservative force acting on the system, $q_j$ represents a single generalised position and $\dot{q_j}$ the corresponding velocity. The non non-conservative could be a control input. Plugging in our Lagrangian into the Euler–Lagrange equation, we the get the following
+<div style="text-align: center ">
+$m_c \ddot{x}+m_p\left(-l \sin (\theta)\left(\dot{ \theta}\right)^2+l \cos (\theta) \ddot{\theta}+\ddot{x}\right) = 0$
+$l m_p\left(-g \sin (\theta)+l \ddot{ \theta} +\cos (\theta) \ddot{ x}\right) = 0$
+</div>
+<p>Now these equations form a system of second order differential equations which describe the dynamics of the cart-pendulum. These become more useful when we solve for $\ddot{x}$ and $\ddot{\theta}$. One, we can study the acceleration of the centre of mass and two, with some additional modification we can numerically integrate them. So, solving these equations for $\ddot{x}$ and $\ddot{x}$ yields</p>
+<div style="text-align: center ">
+$\ddot{x} = \cfrac{g m_p \sin (2 \theta)+2 l m_p \sin (\theta)\left(\dot{ \theta}\right)^2}{2(m_c+m_p \sin ^2(\theta))}$
+</div>
+<div style="text-align: center ">
+$\ddot{\theta} =-\cfrac{2g m_c \sin (\theta)+2g m_p \sin (\theta)+l m_p \sin (2 \theta)\left(\dot{ \theta}\right)^2}{2l\left(m_c+m_p \sin ^2(\theta)\right)}$
+</div>
+</div>
+<h3 id="verifying-test-1">Verifying: test 1</h3>
+<p>Divide the numerator and denominator with $m_c$ so we can use $m_p / m_c \approx 0$. This leads to the following</p>
+<div style="text-align: center ">
+$\ddot{x} = \cfrac{g \mathbf{m_p/m_c} \sin (2 \theta)+2 l \mathbf{m_p/m_c} \sin (\theta)\left(\dot{ \theta}\right)^2}{2(1+\mathbf{m_p/m_c} \sin ^2(\theta))} = 0$
+</div>
+<div style="text-align: center ">
+$\ddot{\theta} =-\frac{2g \sin (\theta)+2g \mathbf{m_p/m_c} \sin (\theta)-l \mathbf{m_p/m_c} \sin (2 \theta)\left(\dot{ \theta}\right)^2}{2l\left(1+\mathbf{m_p/m_c} \sin ^2(\theta)\right)} = -\cfrac{g}{l}\sin(\theta)$
+</div>
+<p>We can see that the equations we derived pass this test. When the mass of the pendulum is negligible compared ot the cart, the cart acceleration is 0, it remains in place and the pendulum behaves like a simple pendulum.</p>
+<h3 id="verifying-test-2">Verifying: test 2</h3>
+<p>Before we proceed, we need to find the expression for the centre of mass, specifically the x component</p>
+<p>Center of mass position, x <br />
+$(m_c x_c + m_p x_p)/(m_c + m_p)$</p>
+<p>Differntiating this twice with time yields<br /></p>
+<div style="text-align: center ">
+$\cfrac{m_c \ddot{ x}+m_p\left(-l \sin (\theta)\left(\dot{ \theta}\right)^2+l \cos (\theta) \ddot{ \theta}+\ddot{ x}\right)}{m_c+m_p}$
+</div>
+<p>You will notice that the numerator is one of the equations we get after plugging in the Lagrangian in the Euler-Lagrange equation. So this evaluate to 0, passing our test.</p>
+<p>Why did this happen? Physically, no horizontal force acts on the system. In terms of the Lagrangian mechanics, we can explain this as follows. The Lagrangian is independent of $x$, so differentiaing it with respect to $x$ yields 0. In other words</p>
+<div style="text-align: center ">
+$\begin{equation}
+\cfrac{\partial L}{\partial x} = 0
+\end{equation}$
+</div>
+<p>Plugging this in the Euler-Lagrange equation we get</p>
+<div style="text-align: center ">
+$\begin{equation}
+\cfrac{\mathrm{d}}{\mathrm{d} t}\left(\cfrac{\partial L}{\partial \dot{x}}\right) = 0
+\end{equation}$
+</div>
+<p>This implies, the quantity $\frac{\partial L}{\partial \dot{x}}$ is a constant of the system. In the next article, regarding Hamiltonian dynamics, we will see that this quantity is called generalised momentum conjugate to $x$.</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>This article gave a brief discussion on deriving the dynamics of a cart-pendulum using the Lagrangian formulation. The code I used to derive the equations are given in this link <a href="https://github.com/rohitkjohnedu/Dynamics-and-Control/blob/main/cart_pendulum_control/cart_pendulum-Lagrangian_dynamics.ipynb" target="_blank" rel="noopener">link</a>. In the next article we will explore the use of the Hamiltonian framework to derive the governing equations.</p>
+<!-- --------------------------------------------------------------------------------- Reference -->
+<h1 id="reference">Reference</h1>
+<p>[1] <a href="https://en.wikipedia.org/wiki/Lagrangian_mechanics" target="_blank" rel="noopener">Wikipedia: Lagrangian mechanics</a>
+[2] <a href="https://www.youtube.com/watch?v=sCZ80l6UarM&amp;list=PL5E4E56893588CBA8&amp;index=8" target="_blank" rel="noopener">Classical Mechanics: Lagrangina formalise, V Balakrishnan</a></p>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Frohitkjohnedu.github.io%2Fpost%2Fcart_pendulum_dynamics%2F&amp;text=Cart&#43;pendulum&#43;Part&#43;1%3A&#43;Lagrangian&#43;mechanics" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Frohitkjohnedu.github.io%2Fpost%2Fcart_pendulum_dynamics%2F&amp;t=Cart&#43;pendulum&#43;Part&#43;1%3A&#43;Lagrangian&#43;mechanics" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a href="mailto:?subject=Cart%20pendulum%20Part%201%3A%20Lagrangian%20mechanics&amp;body=https%3A%2F%2Frohitkjohnedu.github.io%2Fpost%2Fcart_pendulum_dynamics%2F" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Frohitkjohnedu.github.io%2Fpost%2Fcart_pendulum_dynamics%2F&amp;title=Cart&#43;pendulum&#43;Part&#43;1%3A&#43;Lagrangian&#43;mechanics" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Cart&#43;pendulum&#43;Part&#43;1%3A&#43;Lagrangian&#43;mechanics%20https%3A%2F%2Frohitkjohnedu.github.io%2Fpost%2Fcart_pendulum_dynamics%2F" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Frohitkjohnedu.github.io%2Fpost%2Fcart_pendulum_dynamics%2F&amp;title=Cart&#43;pendulum&#43;Part&#43;1%3A&#43;Lagrangian&#43;mechanics" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://rohitkjohnedu.github.io/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu80a27bf9bfaadc72f55f70271bf01878_789425_270x270_fill_q75_lanczos_center.jpg" alt="Biography"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://rohitkjohnedu.github.io/">Biography</a></h5>
+      <h6 class="card-subtitle">Roboticist</h6>
+      <p class="card-text">Elevating ideas from concept to reality through design, analysis, construction, and constant improvement</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/rohitkjohnedu" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/rohitkjohn/" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2023 Me. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+
+
+<script src="/js/vendor-bundle.min.d26509351aa0ff874abbee824e982e9b.js"></script>
+
+
+
+
+  
+
+  
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script id="search-hit-fuse-template" type="text/x-template">
+    <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+    </div>
+  </script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+<script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+
+
+  <script src="/js/wowchemy-headroom.db4755770454eb63685f8de785c0a172.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+<script src="/en/js/wowchemy.min.e8ee06ba8371980ffde659871dd593b0.js"></script>
+
+
+
+
+
+
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <pre><code></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
