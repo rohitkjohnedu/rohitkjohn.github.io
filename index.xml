@@ -34,9 +34,9 @@
     
     <item>
       <title>Cart pendulum Part 1: Lagrangian mechanics</title>
-      <link>https://rohitkjohnedu.github.io/post/cart_pendulum_dynamics/</link>
+      <link>https://rohitkjohnedu.github.io/post/cart_pendulum_lagrangian_dynamics/</link>
       <pubDate>Fri, 27 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>https://rohitkjohnedu.github.io/post/cart_pendulum_dynamics/</guid>
+      <guid>https://rohitkjohnedu.github.io/post/cart_pendulum_lagrangian_dynamics/</guid>
       <description>&lt;!-- ------------------------------------------------------------------------------ Introduction --&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;div style=&#34;text-align: justify &#34;&gt;
@@ -144,8 +144,101 @@ $\begin{equation}
 &lt;!-- --------------------------------------------------------------------------------- Reference --&gt;
 &lt;h1 id=&#34;reference&#34;&gt;Reference&lt;/h1&gt;
 &lt;p&gt;[1] &lt;a href=&#34;https://en.wikipedia.org/wiki/Lagrangian_mechanics&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wikipedia: Lagrangian mechanics&lt;/a&gt;
-[2] &lt;a href=&#34;https://www.youtube.com/watch?v=sCZ80l6UarM&amp;amp;list=PL5E4E56893588CBA8&amp;amp;index=8&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Classical Mechanics: Lagrangina formalise, V Balakrishnan&lt;/a&gt;&lt;/p&gt;
+[2] &lt;a href=&#34;https://www.youtube.com/watch?v=sCZ80l6UarM&amp;amp;list=PL5E4E56893588CBA8&amp;amp;index=8&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Classical Mechanics: Lagrangian formalism, V Balakrishnan&lt;/a&gt;&lt;/p&gt;
 </description>
+    </item>
+    
+    <item>
+      <title>Cart pendulum Part 2: Hamiltonian mechanics</title>
+      <link>https://rohitkjohnedu.github.io/post/cart_pendulum_hamiltonian_dynamics/</link>
+      <pubDate>Fri, 27 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>https://rohitkjohnedu.github.io/post/cart_pendulum_hamiltonian_dynamics/</guid>
+      <description>&lt;!-- ------------------------------------------------------------------------------ Introduction --&gt;
+&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;div style=&#34;text-align: justify &#34;&gt;
+&lt;p&gt;In the last &lt;a href=&#34;https://rohitkjohnedu.github.io/post/cart_pendulum_lagrangian_dynamics/&#34;&gt;article&lt;/a&gt;, we derived the dynamical equations of the cart pendulum using the Lagrangian formulation. In this cart, we will use an alternate formulation called Hamiltonian mechanics to derive the dynamical equations. Although the resulting equations may not be same, rest assured it describes the same dynamics. The code used to derive these equations are hosted &lt;a href=&#34;https://github.com/rohitkjohnedu/Dynamics-and-Control/blob/main/cart_pendulum_control/cart_pendulum-Lagrangian_dynamics.ipynb&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;!-- ------------------------------------------------------------------------------ System setup --&gt;
+&lt;h1 id=&#34;system-setup&#34;&gt;System setup&lt;/h1&gt;
+&lt;div style=&#34;text-align: justify &#34;&gt;
+This article follows the same convention for defining the static configuration of the system. It is defined by two variables; $x$ the position of the cart relative to a reference and $\theta$ the angle between the pendulum and the vertical axis ($y$-axis) . Unlike a regular pendulum, the angle $\theta$ is measured from the positive $y$-axis. The system setup is represented concisely in the following image.
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;setup.jpg&#34; alt=&#34;System setup&#34; style=&#34;width:500px&#34;&gt;&lt;figcaption&gt;Fig.1: System setup.&lt;/figcaption&gt;&lt;/p&gt;
+&lt;div style=&#34;text-align: justify &#34;&gt;
+The system is this case is simplified. We assume the system experiences no friction or air drag. Additionally the pendulum is assumted to be point mass $m_p$ attached to a mass less rod of length $l$. The pendulum is attached the cart of mass $m_c$.
+&lt;/div&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;!-- ---------------------------------------------------------------------- Hamiltonian Mechanics --&gt;
+&lt;h1 id=&#34;hamiltonian-mechanics&#34;&gt;Hamiltonian Mechanics&lt;/h1&gt;
+&lt;div style=&#34;text-align: justify &#34;&gt;
+&lt;p&gt;Hamiltonian mechanics is an alternate formulation of mechanics based on Lagrangian mechanics[1]. It replaces the generalised veolcity with the generalised momentum in the governing equations. Interestingly, it bridges classical mechanics and quantum mechanics. [2] is an excellent lecture on Hamiltonian mechanics. &lt;strong&gt;Please note may not necessarily be equal to the mechanical momentum $p=mv$ in a system&lt;/strong&gt;. This was the first mistake I made, when I wrote the code.&lt;/p&gt;
+&lt;!-- ----------------------------------------------------------------- Setting up the Lagrangian --&gt;
+&lt;h2 id=&#34;setting-up-the-hamiltonian&#34;&gt;Setting up the Hamiltonian&lt;/h2&gt;
+&lt;p&gt;The quantities $L$, $T$ and $V$ are functions of the generalised states (the generalised positions $\textbf{q}$ and velocities $\dot{\textbf{q}}$) and time $t$. Additionally, $\textbf{p}$ represents the generalised momenta. To get the Hamiltonian, we perform a Legendre transformation on the Lnagrangian.&lt;/p&gt;
+&lt;p&gt;The differential of the Langrangian is given by the following&lt;/p&gt;
+&lt;div style=&#34;text-align: center &#34;&gt;
+&lt;p&gt;$
+dL = \cfrac{\partial L}{\partial \dot{q}} d \dot{q} + \cfrac{\partial L}{\partial q} d q + \cfrac{\partial L}{\partial t} d t
+$&lt;/p&gt;
+&lt;/div&gt;
+&lt;br /&gt;
+&lt;p&gt;Now, compare $\frac{dP}{dt}= F$ and $\frac{d}{d t}\left(\frac{\partial L}{\partial \dot{q}}\right) = \frac{\partial L}{\partial q} + Q_n$. We see that the $P$ and $\frac{\partial L}{\partial \dot{q}}$ occupy the same position. So we call $\frac{\partial L}{\partial \dot{q}}$ the generalised momentum $p$. Now, we want a quantity $H = H(q,p,t)$. This is where the Legendre transformation comes in and it is shown below.&lt;/p&gt;
+&lt;div style=&#34;text-align: center &#34;&gt;
+$
+\begin{equation}
+H = \textbf{p}\dot{\textbf{q}} - L
+\tag{1}
+\end{equation}
+$
+&lt;/div&gt;
+&lt;p&gt;Note that we solve the equations $p = \frac{\partial L}{\partial \dot{q}}$ to express $\dot{q}$ in terms of $p$ and substitute in the equation (1), to express $H$ as a function of $q$ $p$ and $t$ alone. It will turn out that the Hamiltonian is the total energy of mechanical systems&lt;/p&gt;
+&lt;p&gt;We have to go through with this convoluted process because the generalised momenta need not be apparent and so it will not be possible to express the kinetic energy using $p$. These steps are illustrated for the cart pendulum below.&lt;/p&gt;
+&lt;br /&gt;
+Position of the cart &lt;br /&gt; $(x,0)$ &lt;br /&gt;&lt;br /&gt;
+&lt;p&gt;Velocity of the cart &lt;br /&gt; $(\dot{x}, 0)$ &lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;Kinetic energy of the cart &lt;br /&gt;  $\cfrac{1}{2}m_c\dot{x}^2$ &lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;Potential energy of the cart &lt;br /&gt; 0&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;Position of the pendulum &lt;br /&gt;  $(x + l\sin(\theta), l\cos(\theta))$&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;Velocity of the pendulum &lt;br /&gt; $(\dot{x} + \dot{\theta}l\cos(\theta), -\dot{\theta}l\sin(\theta))$&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;Kinetic energy of the pendulum &lt;br /&gt; $\cfrac{1}{2}m_p((\dot{x} + \dot{\theta}l\cos(\theta))^2 + (-\dot{\theta}l\sin(\theta)^2))$ &lt;br /&gt;
+$\cfrac{1}{2}m_p(\dot{x}^2 + 2\dot{x}\dot{\theta}l\cos(\theta) + (\dot{\theta}l)^2)$&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;Potential energy of the pendulum &lt;br /&gt; $-m_pgl\cos(\theta)$&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;Total kinetic energy, $T$ &lt;br /&gt; $\cfrac{1}{2}m_c\dot{x}^2 + \cfrac{1}{2}m_p(\dot{x}^2 + 2\dot{x}\dot{\theta}l\cos(\theta) + (\dot{\theta}l)^2)$&lt;br /&gt;&lt;br /&gt;
+Total potential energy, $V$ &lt;br /&gt; $-m_pgl\cos(\theta)$ &lt;br /&gt;&lt;br /&gt;
+The Lagrangian, $L$ &lt;br /&gt; $\cfrac{1}{2}m_c\dot{x}^2 + \cfrac{1}{2}m_p(\dot{x}^2 + 2\dot{x}\dot{\theta}l\cos(\theta) + (\dot{\theta}l)^2) + m_pgl\cos(\theta)$&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;The generalised momenta
+$\begin{equation}
+p_1 = m_c \ddot{x}+m_p\left(-l \sin (\theta)\left(\dot{ \theta}\right)^2+l \cos (\theta) \ddot{\theta}+\ddot{x}\right)
+\end{equation}$&lt;/p&gt;
+&lt;p&gt;$
+p_2 = m_pl\left(l \dot{\theta} +\cos \left(\theta\right) \dot{x} \right)
+$&lt;/p&gt;
+&lt;p&gt;You can observe that $p_1$ is the momentum of the center of the mass along the $x$ axis while $p_2$ is the momentum along the $\theta$ axis. Now these equations can be solved and substituted to get the Hamiltonian as shown below.&lt;/p&gt;
+&lt;p&gt;The Hamiltonian, $H$&lt;br /&gt;
+$
+\frac{g l^3 m_c m_p^2 \cos \left(\theta\right)+g l^3 m_p^3 \sin ^2\left(\theta\right) \cos \left(\theta\right)+\frac{l^2 m_p \mathrm{p}_1^2}{2}-l m_p \mathrm{p}_1 \mathrm{p}_2 \cos \left(\theta\right)+\frac{m_c \mathrm{p}_2^2}{2}+\frac{m_p \mathrm{p}_2^2}{2}}{l^2 m_p\left(m_c+m_p \sin ^2\left(\theta\right)\right)}
+$&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;!-- ----------------------------------------------------------------------- Dynamical equations --&gt;
+&lt;h2 id=&#34;dynamical-equations&#34;&gt;Dynamical equations&lt;/h2&gt;
+&lt;p&gt;The dynamical equations are calculated using Hamilton&amp;rsquo;s equations. It is shown below&lt;/p&gt;
+&lt;div style=&#34;text-align: center &#34;&gt;
+$\begin{equation}
+\cfrac{\mathrm{d} \boldsymbol{q_j}}{\mathrm{d} t}=\cfrac{\partial H}{\partial \boldsymbol{p_j}}, \quad \cfrac{\mathrm{d} \boldsymbol{p_j}}{\mathrm{d} t}=-\cfrac{\partial H}{\partial \boldsymbol{q_j}} + Q_{nc}
+\end{equation}$
+&lt;/div&gt;
+&lt;p&gt;Here $Q_{nc}$ represents and non-conservative force acting on the system, $q_j$ represents a single generalised position and $p_j$ the conjugate momentum. The non non-conservative could be a control input. Plugging in our Hamiltonian into Hamilton&amp;rsquo;s equations results in an incredibly complicated set of equations, which cannot be shown here. It is calculated in the notebook &lt;a href=&#34;https://github.com/rohitkjohnedu/Dynamics-and-Control/blob/main/cart_pendulum_control/cart_pendulum-Lagrangian_dynamics.ipynb&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;These set of equations are first order and can be solved using numerical integration. In this system, the Hamiltonian (Total energy) is a constant of motion, so the integration scheme must take this into account to ensure minimal deviation from the system. These family of integrators are called symplectic integrators [3]. If we just require a very rough estimate of the motion, then schemes such as Runge-Kutta are useful.&lt;/p&gt;
+&lt;h1 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h1&gt;
+&lt;p&gt;This article gave a brief discussion on deriving the dynamics of a cart-pendulum using the Hamiltonian formulation. The code I used to derive the equations are given in this link &lt;a href=&#34;https://github.com/rohitkjohnedu/Dynamics-and-Control/blob/main/cart_pendulum_control/cart_pendulum-Lagrangian_dynamics.ipynb&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;. The equations we get are way more conplicated that those we get using the Lagrangian Formulation (discussed &lt;a href=&#34;https://rohitkjohnedu.github.io/post/cart_pendulum_lagrangian_dynamics/&#34;&gt;here&lt;/a&gt;), nevertheless, this article is an exercise is using Hamiltonian dynamics.&lt;/p&gt;
+&lt;!-- --------------------------------------------------------------------------------- Reference --&gt;
+&lt;h1 id=&#34;reference&#34;&gt;Reference&lt;/h1&gt;
+&lt;p&gt;[1] &lt;a href=&#34;https://en.wikipedia.org/wiki/Hamiltonian_mechanics&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wikipedia: Hamiltonian mechanics&lt;/a&gt; &lt;br /&gt;
+[2] &lt;a href=&#34;https://www.youtube.com/watch?v=GOkZs2RZMQY&amp;amp;list=PL5E4E56893588CBA8&amp;amp;index=11&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Classical Mechanics: Hamiltonian dynamics, V Balakrishnan&lt;/a&gt; &lt;br /&gt;
+[3] &lt;a href=&#34;https://en.wikipedia.org/wiki/Symplectic_integrator&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wikipedia: Symplectic integrator&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;</description>
     </item>
     
     <item>
